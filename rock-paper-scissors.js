@@ -1,3 +1,5 @@
+let playerWinRound = 0;
+let computerWinRound = 0;
 
 function computerPlay(){
     switch(Math.floor(Math.random()*3 +1)){
@@ -11,38 +13,64 @@ function computerPlay(){
 }
 
 function playRound(computerSelection, playerSelection){
-    
+
     if (computerSelection === playerSelection){
         return "It's a tie!";
     }
     else if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
+            computerWinRound += 1;
             return "You lose! Paper envelopes rock"
         }
         else if (computerSelection == 'scissors'){
-            return "You win! Rock smashes scissors."
+            playerWinRound += 1;
+            return "You win! Rock smashes scissors.";
         }
     }
     else if (playerSelection == 'paper') {
         if (computerSelection == 'rock') {
+            playerWinRound += 1;
             return "You win! Paper envelopes rock."
         }
         else if (computerSelection == 'scissors'){
-            return "You lose! Scissors cut paper."
+            computerWinRound += 1;
+            return "You lose! Scissors cut paper.";
         }
     }
     else {
         if (computerSelection == 'rock') {
-            return "You lose! Rock smashes scissors."
+            computerWinRound += 1;
+            return "You lose! Rock smashes scissors.";
+
         }
         else if (computerSelection == 'paper'){
-            return "You win! Scissors cut paper."
+            playerWinRound += 1;
+            return "You win! Scissors cut paper.";
+
         }
     }
-    console.log(playerSelection);
 }
-computerSelection = computerPlay();
-    // Need to add a check for valid input
-playerSelection = window.prompt('Rock, paper or scissors?').toLowerCase();
+
     
-console.log(playRound(computerSelection, playerSelection));
+function game(){
+
+    let round = 0;
+    do {
+        computerSelection = computerPlay();
+        // Need to add a check for valid input
+        playerSelection = window.prompt('Rock, paper or scissors?').toLowerCase();
+        console.log(playRound(computerSelection, playerSelection));
+        round++;
+    } while (round < 5);
+    if (playerWinRound === computerWinRound){
+        console.log("It's a tie out of the 5 rounds!");
+    }
+    else if (playerWinRound > computerWinRound){
+        console.log(`You win with ${playerWinRound} out of 5 rounds.`);
+    }
+    else {
+        console.log(`Computer wins with ${computerWinRound} out of 5 rounds.`);
+    }
+}
+
+game();
