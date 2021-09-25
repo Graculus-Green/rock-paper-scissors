@@ -58,7 +58,7 @@ function playRound(computerSelection, playerSelection){
 };
 
     
-function game(){
+/*function game(){
 
    
     while (playerWinRound < 5 || computerWinRound <5) {
@@ -75,7 +75,7 @@ function game(){
     };
 };
 
-//game();
+game();*/
 function removeTransition(e) {
     if (e.propertyName !== 'transform') return;
     e.target.classList.remove('playing');
