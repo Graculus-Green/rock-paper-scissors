@@ -1,16 +1,13 @@
+
 let playerWinRound = 0;
 let computerWinRound = 0;
+let rockButton = document.querySelector('#rock');
 
 function computerPlay(){
-    switch(Math.floor(Math.random()*3 +1)){
-        case 1:
-            return 'rock';
-        case 2:
-            return 'paper'
-        case 3:
-            return 'scissors'
-    }
-}
+    let choice = Math.floor(Math.random()*3);
+    const choices = ['rock', 'paper', 'scissors'];
+    return choices[choice];
+};
 
 function playRound(computerSelection, playerSelection){
 
@@ -49,19 +46,19 @@ function playRound(computerSelection, playerSelection){
 
         }
     }
-}
+};
 
     
 function game(){
 
-    let round = 0;
+   /* let round = 0;
     do {
         computerSelection = computerPlay();
         // Need to add a check for valid input
         playerSelection = window.prompt('Rock, paper or scissors?').toLowerCase();
         console.log(playRound(computerSelection, playerSelection));
         round++;
-    } while (round < 5);
+    } while (round < 5);*/
     if (playerWinRound === computerWinRound){
         console.log("It's a tie out of the 5 rounds!");
     }
@@ -70,7 +67,13 @@ function game(){
     }
     else {
         console.log(`Computer wins with ${computerWinRound} out of 5 rounds.`);
-    }
-}
+    };
+};
 
-game();
+//game();
+rockButton.addEventListener('click', function() {
+    computerSelection = computerPlay();
+    console.log(computerSelection);
+    playerSelection = 'rock';
+    console.log(playRound());
+});
