@@ -1,7 +1,6 @@
 
 let playerWinRound = 0;
 let computerWinRound = 0;
-let rockButton = document.querySelector('#rock');
 
 function computerPlay(){
     let choice = Math.floor(Math.random()*3);
@@ -71,9 +70,14 @@ function game(){
 };
 
 //game();
-rockButton.addEventListener('click', function() {
-    computerSelection = computerPlay();
-    console.log(computerSelection);
-    playerSelection = 'rock';
-    console.log(playRound());
+
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playerSelection = button.id.toString();
+        computerSelection = computerPlay();
+        console.log(playRound(computerSelection, playerSelection));
+    });
 });
