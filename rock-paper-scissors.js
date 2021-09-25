@@ -50,14 +50,14 @@ function playRound(computerSelection, playerSelection){
     
 function game(){
 
-   /* let round = 0;
-    do {
+   
+    while (playerWinRound < 5 || computerWinRound <5) {
         computerSelection = computerPlay();
         // Need to add a check for valid input
         playerSelection = window.prompt('Rock, paper or scissors?').toLowerCase();
         console.log(playRound(computerSelection, playerSelection));
         round++;
-    } while (round < 5);*/
+    };
     if (playerWinRound === computerWinRound){
         console.log("It's a tie out of the 5 rounds!");
     }
@@ -70,14 +70,26 @@ function game(){
 };
 
 //game();
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+};
 
+function playerPlay () {
+    const buttons = document.querySelectorAll('button');
 
-const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('playing');
+            
 
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        playerSelection = button.id.toString();
-        computerSelection = computerPlay();
-        console.log(playRound(computerSelection, playerSelection));
+            playerSelection = button.id.toString();
+            computerSelection = computerPlay();
+            console.log(playRound(computerSelection, playerSelection));
+        });
     });
-});
+};
+const buttons = Array.from(document.querySelectorAll('.btn'));
+buttons.forEach(button => button.addEventListener('transitionend', removeTransition));
+  
+playerPlay();
