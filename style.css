@@ -1,25 +1,111 @@
-.body {
+body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    font-family: Arial, sans-serif;
+    flex-wrap: wrap;
+    margin: 32px;
+    border-radius: 20px;
+    border: 4px solid #3882f6;
 }
 
-.btn-container {
+.header, .footer {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    align-items: center;
+    background-color: #1F2937;
+    color: #F9FAF8;
+    font-size: 24px;
+    justify-content: center;
+    padding: 0 64px;
+
+    flex-wrap: wrap;
+}
+.header {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+.footer {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    padding: 8px;
+    border-bottom-left-radius: 16px ;
+    border-bottom-right-radius: 16px;
+}
+
+.results-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    background-color:#D3D3D3;
+    color: #1F2937;
+    font-family: Arial, sans-serif;
+
+}
+
+.btn-container, .counter-container {
     display: flex;
     flex-direction: row;
     gap: 32px;
     justify-content: center;
     align-items: center;
     padding: 32px;
-    background-color: #D3D3D3;
+    background-color:#F9FAF8;
 }
+
+.counter {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    border: 2px solid #1F2937;
+    background-color: #3882f6;
+    color:white;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.btntitle {
+    display:flex;
+    flex-wrap: wrap;
+    font-size: 32px;
+    font-weight: 900;
+    color: #1F2937;
+    justify-content: center;
+    margin:32px;
+}
+
 .btn {
-    width: 70px;
-    height: 50px;
-    border: 2px solid black;
-    background-color: #ADD8E6;
+    display: flex;
+    width: 200px;
+    height: 200px;
+    border: 6px solid #1F2937;
+    color:white;
     border-radius: 5px;
     transition: all 0.08s ease;
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+}
+#rock {
+    display: flex;
+    background-image: url("img/rock.jpg");
+    background-size: cover;
+}
+
+#paper {
+    display: flex;
+    background-image: url("img/paper.jpg");
+    background-size: cover;
+}
+
+#scissors {
+    display: flex;
+    background-image: url("img/scissors.jpg");
+    background-size: cover;
 }
 
 .playing {

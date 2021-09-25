@@ -1,7 +1,14 @@
 
 let playerWinRound = 0;
 let computerWinRound = 0;
+let tieRound = 0;
 
+function updateResults() {
+    document.getElementById("counter-player").innerHTML = `Player win count: ${playerWinRound}.`;
+    document.getElementById("counter-comp").innerHTML = `Computer win count: ${computerWinRound}.`;
+    document.getElementById("counter-tie").innerHTML = `Tie count: ${tieRound}.`;
+
+};
 function computerPlay(){
     let choice = Math.floor(Math.random()*3);
     const choices = ['rock', 'paper', 'scissors'];
@@ -11,6 +18,7 @@ function computerPlay(){
 function playRound(computerSelection, playerSelection){
 
     if (computerSelection === playerSelection){
+        tieRound ++;
         return "It's a tie!";
     }
     else if (playerSelection == 'rock') {
@@ -45,6 +53,8 @@ function playRound(computerSelection, playerSelection){
 
         }
     }
+    updateResults();
+    console.log(playerWinRound, computerWinRound, tieRound);
 };
 
     
@@ -52,20 +62,16 @@ function game(){
 
    
     while (playerWinRound < 5 || computerWinRound <5) {
-        computerSelection = computerPlay();
-        // Need to add a check for valid input
-        playerSelection = window.prompt('Rock, paper or scissors?').toLowerCase();
-        console.log(playRound(computerSelection, playerSelection));
-        round++;
+        playerPlay();
     };
-    if (playerWinRound === computerWinRound){
-        console.log("It's a tie out of the 5 rounds!");
+    if (playerWinRound === 5){
+        console.log("Player wins overall!");
     }
-    else if (playerWinRound > computerWinRound){
-        console.log(`You win with ${playerWinRound} out of 5 rounds.`);
+    else if (computerWinRound === 5){
+        console.log("Computer wins overall!");
     }
     else {
-        console.log(`Computer wins with ${computerWinRound} out of 5 rounds.`);
+        console.log("There's still all to play for!");
     };
 };
 
@@ -85,7 +91,8 @@ function playerPlay () {
 
             playerSelection = button.id.toString();
             computerSelection = computerPlay();
-            console.log(playRound(computerSelection, playerSelection));
+            document.getElementById("results").innerHTML = playRound(computerSelection, playerSelection);
+            updateResults();
         });
     });
 };
